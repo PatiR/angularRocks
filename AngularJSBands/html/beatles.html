@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Beatles</title>
+	<link href="../style/index.css" rel="stylesheet">
+    <link href="../style/groups.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <meta name="keywords" content="Beatles, rock, John, Lennon, Paul, McCartney, George Harrison, Ringo, Starr">
+    <meta name="description" content="The Beatles fue una banda de pop/rock inglesa activa durante la década de 1960, y reconocida como la más exitosa comercialmente y críticamente aclamada en la historia de la música popular. Formada en Liverpool, estuvo constituida desde 1962 por John Lennon (guitarra rítmica, vocalista), Paul McCartney (bajo, vocalista), George Harrison (guitarra solista, vocalista) y Ringo Starr (batería, vocalista). Enraizada en el skiffle y el rock and roll de los años 1950, la banda trabajó más tarde con distintos géneros musicales, que iban desde las baladas pop hasta el rock psicodélico, incorporando a menudo elementos clásicos, entre otros, de forma innovadora en sus canciones. La naturaleza de su enorme popularidad, que había emergido primeramente con la moda de la «Beatlemanía», se transformó al tiempo que sus composiciones se volvieron más sofisticadas. Llegaron a ser percibidos como la encarnación de los ideales progresistas, extendiendo su influencia en las revoluciones sociales y culturales de la década de 1960.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+	<header>
+		<div class="headerText"><a href="../home.html">Angular Rocks</a></div>
+	</header>
+    <div class="container" ng-app="tabs">
+		<div class="main" ng-controller="TabController">
+			<div class="row-md-2">
+				<ul class="nav nav-tabs">
+				<li ng-class="{ active: isSet(1) }">
+					<a href ng-click="setTab(1)">Vídeo</a>
+				</li>
+				<li ng-class="{ active: isSet(2) }">
+					<a href ng-click="setTab(2)">Anécdotas</a>
+				</li>
+				<li ng-class="{ active: isSet(3) }">
+					<a href ng-click="setTab(3)">Imagen</a>
+				</li>
+				</ul>
+			</div>
+			<div class="row-md-8, group">
+				<div class="a">
+				<div ng-show="isSet(1)">
+					<iframe width="854" height="480" src="https://www.youtube.com/embed/Ue9NI7nenf8" frameborder="0" allowfullscreen></iframe>
+				</div>
+					<div class="groupInfo" ng-show="isSet(2)">
+					<h2>Curiosidades</h2>
+						<p>1. Era frecuente encontrar en la libreta de evaluaciones de John Lennon en la escuela, la frase: "este niño va camino del fracaso"</p>
+						<p>2. El primer LP de los Beatles, "Please, please me", fue grabado completo en un solo día.</p>
+						<p>3. La canción "Yesterday" ha sido la más grabada por diferentes artistas en la historia, con un record de 1300 versiones.</p>
+						<p>4. Cuando Los Beatles fueron por primera vez a Hamburgo, George Harrison fue deportado por no tener la mayoría de edad para viajar a Alemania.</p>
+						<p>5. Lo que más impresionó a John Lennon acerca de Paul McCartney cuando se conocieron en 1956 fue que éste sabía afinar la guitarra.</p>
+					</div>
+				<div ng-show="isSet(3)">
+				  <img id="beatlesImg" class="img-circle"src="../images/beatles.jpg" alt="Beatles" width="890">
+				</div>
+			</div>
+		  </div>
+		</div>
+    </div>
+
+    <script>
+		angular.module('tabs', [])
+	  .controller('TabController', ['$scope', function($scope) {
+		$scope.tab = 1;
+
+		$scope.setTab = function(newTab){
+		  $scope.tab = newTab;
+		};
+
+		$scope.isSet = function(tabNum){
+		  return $scope.tab === tabNum;
+		};
+	}]);
+    </script>
+</body>
+</html>

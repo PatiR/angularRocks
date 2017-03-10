@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queen</title>
+	<link href="../style/index.css" rel="stylesheet">
+    <link href="../style/groups.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <meta name="keywords" content="Queen, rock, Freddie, Mercury, Brian May, Roger Taylor, John Deacon">
+    <meta name="description" content="Queen es una banda británica de rock formada en 1970 en Londres por el cantante Freddie Mercury, el guitarrista Brian May, el baterista Roger Taylor y el bajista John Deacon. Si bien el grupo ha presentado bajas de dos de sus miembros (Mercury, fallecido en 1991, y Deacon, retirado en 1997), los integrantes restantes, May y Taylor, continúan trabajando bajo el nombre Queen, por lo que la banda aún es considerada activa.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+	<header>
+		<div class="headerText"><a href="../home.html">Angular Rocks</a></div>
+	</header>
+    <div class="container" ng-app="tabs">
+	<div class="main" ng-controller="TabController">
+		<div class="col-md-2">
+			<ul class="nav nav-pills nav-stacked queenPills">
+			<li ng-class="{ active: isSet(1) }">
+				<a href ng-click="setTab(1)">Vídeo</a>
+			</li>
+			<li ng-class="{ active: isSet(2) }">
+				<a href ng-click="setTab(2)">Anécdotas</a>
+			</li>
+			<li ng-class="{ active: isSet(3) }">
+				<a href ng-click="setTab(3)">Imagen</a>
+			</li>
+			</ul>
+		</div>
+		<div class="col-md-8">
+			<div class="a, group">
+				<div ng-show="isSet(1)">
+					<iframe width="854" height="480" src="https://www.youtube.com/embed/fJ9rUzIMcZQ?controls=1" frameborder="0" allowfullscreen></iframe>
+				</div>
+				<div class="groupInfo" ng-show="isSet(2)">
+					<h2>Curiosidades</h2>
+						<p>1. Stone Cold Crazy fue la primera canción escrita por Freddie (al menos que se conociera) cuando militaba en el grupo Wreckage."</p>
+						<p>2. Brian ya asombraba con su destreza con la guitarra desde muy joven. Una vez sorprendió a su grupo de amigos tocando "The Happy Hendricks Polka", de los Sputnik. Esta cancion contiene un solo de guitarra muy rapido que Brian tocó a la perfección. Solo despues se enteró de que en la cancion original el solo de guitarra se habia acelerado en las mezclas.</p>
+						<p>3. En un concierto, todavia con la banda Wreckage, Freddie tuvo un accidente que despues se convertiria en un simbolo de Queen. Estaba en el escenario jugando con el microfono cuando se le rompio la base. A partir de entonces Freddie siempre uso el microfono sin base, solo con el palo.</p>
+						<p>4. En Bohemian Rapshody, las voces de la parte operística parecen hechas por un numerosísimo coro, pero en realidad, son las voces de Freddie Mercury, Brian May y Roger Taylor dobladas hasta 180 veces.</p>
+						<p>5. La ciudad de Boston declaró el día 23 de julio de 1982 el Día Oficial de Queen. La banda recibió las llaves de la ciudad de manos de su alcalde.</p>
+					</div>
+				<div ng-show="isSet(3)">
+				  <img id="queenImg" src="../images/queen.jpg" alt="Queen" width="700">
+				</div>
+		</div>
+	</div>
+
+    <script>
+		angular.module('tabs', [])
+	  .controller('TabController', ['$scope', function($scope) {
+		$scope.tab = 1;
+
+		$scope.setTab = function(newTab){
+		  $scope.tab = newTab;
+		};
+
+		$scope.isSet = function(tabNum){
+		  return $scope.tab === tabNum;
+		};
+	}]);
+    </script>
+</body>
+</html>
